@@ -17,6 +17,7 @@ class ChecklistViewController: UITableViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+        //CHANGE
     }
     
     override func tableView(_ tableView: UITableView,
