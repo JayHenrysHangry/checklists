@@ -26,6 +26,8 @@ class ChecklistViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView,
+                            
+                            // Below cellForRowAt method is to deliver a new or recycled cell object to the table view when a row becomes visible.
                             cellForRowAt indexPath: IndexPath) ->
         UITableViewCell {
             
@@ -60,6 +62,22 @@ class ChecklistViewController: UITableViewController {
             }
             
             return cell
+    }
+    
+    // Makes it so when you tap a cell it no longer fully turns gray and stays. Now it turns gray but then fades away.
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        // Theoretically it's possible there's no cell at the specified indexPath. The code after the if let is only executed if there is a UITableViewCell object. (Technically in this app there will always be, but swift doesn't know that).
+        if let cell = tableView.cellForRow(at: indexPath) { // Note: this is not the same method as tableView(_:cellForRowAt:) from above. It's job is to return a cell object of an existing cell for a row that is currently being displayed.
+            
+            // The checkmark is part of the cell as the accessory.
+            if cell.accessoryType == .none {
+                cell.accessoryType = .checkmark
+            } else {
+                cell.accessoryType = .none
+            }
+        }
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 
 }
