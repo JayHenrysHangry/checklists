@@ -21,14 +21,14 @@ class ChecklistViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView,
-                               numberOfRowsInSection section: Int) -> Int {
+                               numberOfRowsInSection/*external parameter name*/ section/*local parameter name*/: Int) -> Int {
         return 100
     }
     
     override func tableView(_ tableView: UITableView,
                             
                             // Below cellForRowAt method is to deliver a new or recycled cell object to the table view when a row becomes visible.
-                            cellForRowAt indexPath: IndexPath) ->
+                            cellForRowAt indexPath: IndexPath) -> //IndexPath is simply an object that points to a specific row in the table. When the table view asks the data source for a cell, you can look at the row number inside the indexPath.row property to find out the row for which the cell is intended.
         UITableViewCell {
             
             let cell = tableView.dequeueReusableCell(
@@ -49,7 +49,7 @@ class ChecklistViewController: UITableViewController {
                 label.text = "Eat ice cream"
             }*/
             
-            if indexPath.row % 5 == 0 {
+            if indexPath.row % 5 == 0 { // indexPath.row contains the row number, and changes the label’s text accordingly.
                 label.text = "Walk the dog"
             } else if indexPath.row % 5 == 1 {
                 label.text = "Brush my teeth"
