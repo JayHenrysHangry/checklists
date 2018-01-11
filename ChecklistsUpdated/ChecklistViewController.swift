@@ -9,10 +9,12 @@
 import UIKit
 //test
 class ChecklistViewController: UITableViewController {
+
     private struct Constant {
         static let NumberOfRows = 100
         static let CellReuseID = "ChecklistItem"
         static let CellLabelTag = 1000
+
     }
     
     override func tableView(_ tableView: UITableView,
