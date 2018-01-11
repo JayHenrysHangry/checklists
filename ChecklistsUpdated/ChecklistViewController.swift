@@ -9,20 +9,15 @@
 import UIKit
 //test
 class ChecklistViewController: UITableViewController {
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-        //CHANGE
+    private struct Constant {
+        static let NumberOfRows = 100
+        static let CellReuseID = "ChecklistItem"
+        static let CellLabelTag = 1000
     }
     
     override func tableView(_ tableView: UITableView,
                                numberOfRowsInSection/*external parameter name*/ section/*local parameter name*/: Int) -> Int {
-        return 100
+        return Constant.NumberOfRows
     }
     
     override func tableView(_ tableView: UITableView,
@@ -32,33 +27,33 @@ class ChecklistViewController: UITableViewController {
         UITableViewCell {
             
             let cell = tableView.dequeueReusableCell(
-                withIdentifier: "ChecklistItem",
+                withIdentifier: Constant.CellReuseID,
                 for: indexPath)
             
-            let label = cell.viewWithTag(1000) as! UILabel
-            
-            /*if indexPath.row == 0 {
-                label.text = "Walk the dog"
-            } else if indexPath.row == 1 {
-                label.text = "Brush my teeth"
-            } else if indexPath.row == 2 {
-                label.text = "Lean iOS development"
-            } else if indexPath.row == 3 {
-                label.text = "Soccer practice"
-            } else if indexPath.row == 4 {
-                label.text = "Eat ice cream"
-            }*/
-            
-            if indexPath.row % 5 == 0 { // indexPath.row contains the row number, and changes the label’s text accordingly.
-                label.text = "Walk the dog"
-            } else if indexPath.row % 5 == 1 {
-                label.text = "Brush my teeth"
-            } else if indexPath.row % 5 == 2 {
-                label.text = "Learn iOS development"
-            } else if indexPath.row % 5 == 3 {
-                label.text = "Soccer practice"
-            } else if indexPath.row % 5 == 4 {
-                label.text = "Eat ice cream"
+            if let label = cell.viewWithTag(Constant.CellLabelTag) as? UILabel {
+                /*if indexPath.row == 0 {
+                 label.text = "Walk the dog"
+                 } else if indexPath.row == 1 {
+                 label.text = "Brush my teeth"
+                 } else if indexPath.row == 2 {
+                 label.text = "Lean iOS development"
+                 } else if indexPath.row == 3 {
+                 label.text = "Soccer practice"
+                 } else if indexPath.row == 4 {
+                 label.text = "Eat ice cream"
+                 }*/
+
+                if indexPath.row % 5 == 0 { // indexPath.row contains the row number, and changes the label’s text accordingly.
+                    label.text = "Walk the dog"
+                } else if indexPath.row % 5 == 1 {
+                    label.text = "Brush my teeth"
+                } else if indexPath.row % 5 == 2 {
+                    label.text = "Learn iOS development"
+                } else if indexPath.row % 5 == 3 {
+                    label.text = "Soccer practice"
+                } else if indexPath.row % 5 == 4 {
+                    label.text = "Eat ice cream"
+                }
             }
             
             return cell
