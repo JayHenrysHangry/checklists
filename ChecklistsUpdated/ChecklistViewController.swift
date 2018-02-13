@@ -22,9 +22,7 @@ class ChecklistViewController: UITableViewController {
         return Constant.NumberOfRows
     }
     
-    override func tableView(_ tableView: UITableView,
-                            cellForRowAt indexPath: IndexPath) ->
-        UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             
             let cell = tableView.dequeueReusableCell(
 
